@@ -8,22 +8,14 @@ buttons.forEach(button => {
     canvas.fontSize = button.attributes.fontSize.nodeValue;
     canvas.backColor = button.attributes.backColor.nodeValue;
     canvas.text = button.attributes.text.nodeValue;    
-    if(button.attributes.click){
-        canvas.click = button.attributes.click.nodeValue;
-    }else{
-        canvas.click = 'console.log("Clicked")';
-    }
 
-    button.addEventListener("click", evt => { canvasClick(evt, canvas) }, false);
     button.addEventListener("pointermove", evt => { handleMove(evt, canvas) }, false);
     button.addEventListener("mouseleave", evt => { mouseOut(evt, canvas) }, false);
 
     InitBtn(canvas);
 })
 
-function canvasClick(evt, canvas) {
-    eval(canvas.click);
-
+function canvasClick() {
     let d = document.querySelector(".hidden");
     d.classList.remove("hidden");
     setTimeout(() => {
